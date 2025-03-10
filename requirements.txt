@@ -2,6 +2,7 @@ asgiref==3.8.1
 certifi==2025.1.31
 distlib==0.3.9
 Django==5.1.6
+django-cors-headers==4.3.1
 filelock==3.17.0
 packaging==24.2
 pipenv==2024.4.1
