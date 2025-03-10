@@ -2,6 +2,13 @@ from .settings import *
 import dj_database_url
 import os
 
+# Handle ALLOWED_HOSTS more safely
+allowed_hosts = os.getenv('ALLOWED_HOSTS', '')
+if allowed_hosts:
+    ALLOWED_HOSTS = allowed_hosts.split(',')
+else:
+    ALLOWED_HOSTS = ['.onrender.com']
+
 # Configure database using DATABASE_URL
 DATABASES = {
     'default': dj_database_url.config(
@@ -31,7 +38,4 @@ CORS_ALLOWED_ORIGINS = [
 # Media files (Render specific)
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/'
-
-# Update the ALLOWED_HOSTS handling
-ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',') + ['.onrender.com'] 
+MEDIA_URL = '/media/' 
