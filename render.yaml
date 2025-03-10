@@ -7,10 +7,6 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
-      - key: DATABASE_URL
-        fromDatabase:
-          name: car_auction_db
-          property: connectionString
       - key: SECRET_KEY
         generateValue: true
       - key: DEBUG
@@ -21,8 +17,3 @@ services:
         value: "https://car-auction-ww5s.onrender.com"
       - key: DJANGO_SETTINGS_MODULE
         value: "config.settings_prod"
-
-databases:
-  - name: car_auction_db
-    databaseName: car_auction
-    user: car_auction
