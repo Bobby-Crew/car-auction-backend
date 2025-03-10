@@ -31,4 +31,7 @@ CORS_ALLOWED_ORIGINS = [
 # Media files (Render specific)
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_URL = '/media/' 
+MEDIA_URL = '/media/'
+
+# Update the ALLOWED_HOSTS handling
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '').split(',') + ['.onrender.com'] 
