@@ -2,6 +2,13 @@ from .settings import *
 import dj_database_url
 import os
 
+# Ensure SECRET_KEY is set
+if not SECRET_KEY or SECRET_KEY == 'django-insecure-default-key-for-dev':
+    raise ImproperlyConfigured("Production SECRET_KEY must be set in environment")
+
+# Force DEBUG to False in production
+DEBUG = False
+
 # Handle ALLOWED_HOSTS more safely
 allowed_hosts = os.getenv('ALLOWED_HOSTS', '')
 if allowed_hosts:
