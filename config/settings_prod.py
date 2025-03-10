@@ -1,6 +1,7 @@
 from .settings import *
 import dj_database_url
 import os
+from django.core.exceptions import ImproperlyConfigured
 
 # Ensure SECRET_KEY is set
 if not SECRET_KEY or SECRET_KEY == 'django-insecure-default-key-for-dev':
@@ -24,13 +25,6 @@ DATABASES = {
     )
 }
 
-# Static files configuration
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-# Add whitenoise middleware
-MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
-
 # Security settings
 SECURE_SSL_REDIRECT = True
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
@@ -38,7 +32,7 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 
 # Get frontend URL from environment
-FRONTEND_URL = os.getenv('https://car-auction-ww5s.onrender.com', '')
+FRONTEND_URL = os.getenv('FRONTEND_URL', '')
 
 # Update CORS settings
 CORS_ALLOWED_ORIGINS = [FRONTEND_URL] if FRONTEND_URL else []
