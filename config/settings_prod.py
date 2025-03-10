@@ -35,11 +35,20 @@ CSRF_COOKIE_SECURE = True
 FRONTEND_URL = os.getenv('FRONTEND_URL', '')
 
 # Update CORS settings
-CORS_ALLOWED_ORIGINS = [FRONTEND_URL] if FRONTEND_URL else []
+CORS_ALLOWED_ORIGINS = [
+    "https://car-auction-ww5s.onrender.com",  # Your frontend URL
+]
 
-# Add render backend URL
-if os.getenv('https://car-auction-backend.onrender.com'):
-    CORS_ALLOWED_ORIGINS.append(os.getenv('https://car-auction-backend.onrender.com'))
+# Additional CORS settings
+CORS_ALLOW_CREDENTIALS = True
+CORS_ALLOW_METHODS = [
+    'DELETE',
+    'GET',
+    'OPTIONS',
+    'PATCH',
+    'POST',
+    'PUT',
+]
 
 # Media files (Render specific)
 DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
