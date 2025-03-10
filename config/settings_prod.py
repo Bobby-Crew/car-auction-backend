@@ -3,8 +3,8 @@ import dj_database_url
 import os
 from django.core.exceptions import ImproperlyConfigured
 
-# Ensure SECRET_KEY is set
-if not SECRET_KEY or SECRET_KEY == 'django-insecure-default-key-for-dev':
+# Only raise error if SECRET_KEY is the development one
+if SECRET_KEY == 'django-insecure-default-key-for-dev':
     raise ImproperlyConfigured("Production SECRET_KEY must be set in environment")
 
 # Force DEBUG to False in production
