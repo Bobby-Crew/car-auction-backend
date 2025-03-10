@@ -19,6 +19,8 @@ services:
         value: "car-auction-backend.onrender.com,.onrender.com"
       - key: FRONTEND_URL
         value: "https://car-auction-ww5s.onrender.com"
+      - key: DJANGO_SETTINGS_MODULE
+        value: "config.settings_prod"
 
 databases:
   - name: car_auction_db
