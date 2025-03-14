@@ -11,6 +11,7 @@ python manage.py collectstatic --no-input
 
 # Run migrations
 python manage.py migrate
+python manage.py createsuperuser --noinput
 
 # Create logs directory if it doesn't exist
 mkdir -p logs 
